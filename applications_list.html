@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Applicants for {{ job.title }}</h2>
+    {% for application in applications %}
+        <div class="job-card">
+            <p><strong>Applicant:</strong> {{ application.applicant.username }}</p>
+            <p><strong>Cover Letter:</strong> {{ application.cover_letter }}</p>
+            <p><strong>Resume:</strong> <a href="{{ application.resume.url }}">Download</a></p>
+            <p><strong>Applied At:</strong> {{ application.applied_at }}</p>
+        </div>
+    {% empty %}
+        <p>No applications yet.</p>
+    {% endfor %}
+{% endblock %}

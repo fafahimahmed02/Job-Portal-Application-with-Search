@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Employer Dashboard</h2>
+    <h3>Your Posted Jobs</h3>
+    {% for job in jobs %}
+        <div class="job-card">
+            <h4>{{ job.title }}</h4>
+            <p>{{ job.company_name }} - {{ job.location }}</p>
+            <a href="{% url 'job_applicants' job.pk %}">View Applicants</a>
+        </div>
+    {% empty %}
+        <p>No jobs posted yet. <a href="{% url 'job_create' %}">Post a job</a>.</p>
+    {% endfor %}
+{% endblock %}

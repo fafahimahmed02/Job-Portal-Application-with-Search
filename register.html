@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Register</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <select name="role">
+            <option value="applicant">Applicant</option>
+            <option value="employer">Employer</option>
+        </select>
+        <button type="submit">Register</button>
+    </form>
+{% endblock %}

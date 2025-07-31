@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Job Portal</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <nav>
+        <a href="{% url 'home' %}">Home</a>
+        {% if user.is_authenticated %}
+            {% if user.groups.all.0.name == 'Employer' %}
+                <a href="{% url 'employer_dashboard' %}">Dashboard</a>
+                <a href="{% url 'job_create' %}">Post Job</a>
+            {% else %}
+                <a href="{% url 'applicant_dashboard' %}">Dashboard</a>
+                <a href="{% url 'job_list' %}">Jobs</a>
+                <a href="{% url 'my_applications' %}">My Applications</a>
+            {% endif %}
+            <a href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register' %}">Register</a>
+        {% endif %}
+    </nav>
+    <div class="container">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="message {% if message.tags == 'success' %}success{% else %}error{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

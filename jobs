@@ -1,0 +1,17 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.home, name='home'),
+    path('employer/dashboard/', views.employer_dashboard, name='employer_dashboard'),
+    path('applicant/dashboard/', views.applicant_dashboard, name='applicant_dashboard'),
+    path('jobs/', views.job_list, name='job_list'),
+    path('job/<int:pk>/', views.job_detail, name='job_detail'),
+    path('job/new/', views.job_create, name='job_create'),
+    path('job/<int:pk>/apply/', views.apply_job, name='apply_job'),
+    path('job/<int:pk>/applicants/', views.job_applicants, name='job_applicants'),
+    path('my_applications/', views.my_applications, name='my_applications'),
+    path('register/', views.register, name='register'),
+    path('login/', views.login_view, name='login'),
+    path('logout/', views.logout_view, name='logout'),
+]

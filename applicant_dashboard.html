@@ -1,0 +1,5 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Applicant Dashboard</h2>
+    <p>Welcome, {{ user.username }}! <a href="{% url 'job_list' %}">Browse Jobs</a> or <a href="{% url 'my_applications' %}">view your applications</a>.</p>
+{% endblock %}
